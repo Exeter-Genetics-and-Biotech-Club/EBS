@@ -125,6 +125,13 @@ function insertIconSprite() {
       <line x1="12" y1="20" x2="12" y2="4"/>
       <line x1="6" y1="20" x2="6" y2="14"/>
     </symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+    </symbol>
   </svg>`;
   document.body.insertBefore(sprite, document.body.firstChild);
 }
@@ -556,6 +563,26 @@ function initSiteSearch() {
   });
 }
 
+// ── Theme Toggle ─────────────────────────────────────────────────────────────
+function initThemeToggle() {
+  const STORAGE_KEY = 'ebs-theme';
+  const toggles = document.querySelectorAll('[data-theme-toggle]');
+  if (!toggles.length) return;
+
+  toggles.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem(STORAGE_KEY, next);
+      toggles.forEach(t => t.setAttribute('aria-pressed', String(next === 'dark')));
+    });
+  });
+
+  const current = document.documentElement.getAttribute('data-theme') === 'dark';
+  toggles.forEach(t => t.setAttribute('aria-pressed', String(current)));
+}
+
 // ── Init ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   insertIconSprite();
@@ -565,4 +592,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordion();
   initReveal();
   initContactForm();
+  initThemeToggle();
 });

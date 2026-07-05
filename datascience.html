@@ -4,11 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A self-contained EBS data science curriculum hub for biology research, with separate RStudio and Python tracks.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Exeter Biology Symposium">
+  <meta property="og:title" content="Data Science Curriculum — Exeter Biology Symposium">
+  <meta property="og:description" content="A self-contained EBS data science curriculum hub for biology research, with separate RStudio and Python tracks.">
+  <meta property="og:image" content="EBS%20Cover%20Photo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Data Science Curriculum — Exeter Biology Symposium">
+  <meta name="twitter:description" content="A self-contained EBS data science curriculum hub for biology research, with separate RStudio and Python tracks.">
+  <meta name="twitter:image" content="EBS%20Cover%20Photo.png">
   <title>Data Science Curriculum — Exeter Biology Symposium</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>(function(){var t=localStorage.getItem("ebs-theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.setAttribute("data-theme","dark")}})();</script>
   <style>
     .curriculum-shell {
       display: grid;
@@ -24,7 +35,7 @@
       display: flex;
       flex-direction: column;
       border: 1px solid var(--col-border);
-      background: #fff;
+      background: var(--col-bg-card);
     }
     .curriculum-nav a {
       padding: var(--sp-3) var(--sp-4);
@@ -41,7 +52,7 @@
     }
     .curriculum-card {
       border: 1px solid var(--col-border);
-      background: #fff;
+      background: var(--col-bg-card);
       padding: var(--sp-6);
     }
     .curriculum-card + .curriculum-card { margin-top: var(--sp-5); }
@@ -97,7 +108,7 @@
       padding: var(--sp-6);
       border: 1px solid var(--col-border);
       border-left: 4px solid var(--col-primary);
-      background: #fff;
+      background: var(--col-bg-card);
     }
     .module__num {
       width: 52px;
@@ -180,7 +191,7 @@
       width: 100%;
       border-collapse: collapse;
       border: 1px solid var(--col-border);
-      background: #fff;
+      background: var(--col-bg-card);
     }
     .deliverable-table th,
     .deliverable-table td {
@@ -208,7 +219,7 @@
     .lesson {
       border: 1px solid var(--col-border);
       border-top: 4px solid var(--col-primary);
-      background: #fff;
+      background: var(--col-bg-card);
       padding: var(--sp-6);
     }
     .lesson h3 {
@@ -242,7 +253,7 @@
     .dataset-wrap {
       overflow-x: auto;
       border: 1px solid var(--col-border);
-      background: #fff;
+      background: var(--col-bg-card);
     }
     .dataset-table {
       width: 100%;
@@ -266,7 +277,7 @@
     }
     .practice-card {
       border: 1px solid var(--col-border);
-      background: #fff;
+      background: var(--col-bg-card);
       padding: var(--sp-6);
     }
     .practice-card h3 {
@@ -283,7 +294,7 @@
     }
     .answer {
       border: 1px solid var(--col-border);
-      background: #fff;
+      background: var(--col-bg-card);
       padding: var(--sp-5);
     }
     .answer summary {
@@ -363,11 +374,17 @@
           <a href="judges.html"      class="nav__dd-item" role="menuitem">For Judges</a>
         </div>
       </li>
+      <li><a href="schedule.html" class="nav__link">Schedule</a></li>
       <li><a href="faq.html" class="nav__link">FAQ</a></li>
     </ul>
 
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
       <span></span><span></span><span></span>
+    </button>
+
+    <button type="button" class="nav__theme" aria-label="Toggle dark mode" aria-pressed="false" data-theme-toggle>
+      <svg class="icon-moon" width="20" height="20" aria-hidden="true"><use href="#icon-moon"/></svg>
+      <svg class="icon-sun" width="20" height="20" aria-hidden="true"><use href="#icon-sun"/></svg>
     </button>
 
     <button type="button" class="nav__search" aria-label="Search site" aria-haspopup="dialog" data-search-open>
@@ -394,7 +411,13 @@
       <a href="schools.html"     class="nav__m-link">For Schools</a>
       <a href="researchers.html" class="nav__m-link">For Researchers</a>
       <a href="judges.html"      class="nav__m-link">For Judges</a>
+      <a href="schedule.html"    class="nav__m-link">Schedule</a>
       <a href="faq.html"         class="nav__m-link">FAQ</a>
+      <button type="button" class="nav__m-theme" aria-pressed="false" data-theme-toggle>
+        <svg class="icon-moon" width="16" height="16" aria-hidden="true"><use href="#icon-moon"/></svg>
+        <svg class="icon-sun" width="16" height="16" aria-hidden="true"><use href="#icon-sun"/></svg>
+        Dark Mode
+      </button>
       <div class="nav__m-cta">
         <a href="register.html" class="btn btn--white" style="width:100%;justify-content:center;">Register Interest</a>
       </div>

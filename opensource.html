@@ -3,20 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A self-contained RStudio data science track for biology research using R data frames, summaries, plots, and statistical tests.">
-  <title>RStudio Track — Exeter Biology Symposium</title>
+  <meta name="description" content="Explore EBS Open Source — open datasets, code, and curriculum materials from the Exeter Biology Symposium community.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Exeter Biology Symposium">
+  <meta property="og:title" content="EBS Open Source — Exeter Biology Symposium">
+  <meta property="og:description" content="Explore EBS Open Source — open datasets, code, and curriculum materials from the Exeter Biology Symposium community.">
+  <meta property="og:image" content="EBS%20Cover%20Photo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EBS Open Source — Exeter Biology Symposium">
+  <meta name="twitter:description" content="Explore EBS Open Source — open datasets, code, and curriculum materials from the Exeter Biology Symposium community.">
+  <meta name="twitter:image" content="EBS%20Cover%20Photo.png">
+  <title>EBS Open Source — Exeter Biology Symposium</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>(function(){var t=localStorage.getItem("ebs-theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}if(t==="dark"){document.documentElement.setAttribute("data-theme","dark")}})();</script>
   <style>
     .course-shell { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: var(--sp-16); align-items: start; }
     .course-aside { position: sticky; top: calc(var(--nav-h) + var(--sp-8)); }
-    .course-nav { display: flex; flex-direction: column; border: 1px solid var(--col-border); background: #fff; }
+    .course-nav { display: flex; flex-direction: column; border: 1px solid var(--col-border); background: var(--col-bg-card); }
     .course-nav a { padding: var(--sp-3) var(--sp-4); border-bottom: 1px solid var(--col-border); color: var(--col-text-sec); font-size: var(--sz-sm); font-weight: 700; text-decoration: none; }
     .course-nav a:last-child { border-bottom: 0; }
     .course-nav a:hover { background: var(--col-primary); color: #fff; }
-    .course-card { border: 1px solid var(--col-border); background: #fff; padding: var(--sp-6); }
+    .course-card { border: 1px solid var(--col-border); background: var(--col-bg-card); padding: var(--sp-6); }
     .course-card + .course-card { margin-top: var(--sp-5); }
     .course-card h3 { font-size: var(--sz-xl); margin-bottom: var(--sp-3); }
     .course-card p, .course-card li { font-size: var(--sz-sm); color: var(--col-text-sec); line-height: 1.55; }
@@ -25,24 +36,24 @@
     .lesson:last-child { margin-bottom: 0; }
     .lesson h2 { margin-bottom: var(--sp-4); }
     .lesson > p { max-width: 780px; margin-bottom: var(--sp-6); font-size: var(--sz-lg); }
-    .lesson-panel { border: 1px solid var(--col-border); border-top: 4px solid var(--col-primary); background: #fff; padding: var(--sp-6); margin-bottom: var(--sp-5); }
+    .lesson-panel { border: 1px solid var(--col-border); border-top: 4px solid var(--col-primary); background: var(--col-bg-card); padding: var(--sp-6); margin-bottom: var(--sp-5); }
     .lesson-panel h3 { font-size: var(--sz-2xl); margin-bottom: var(--sp-3); }
     .lesson-panel p, .lesson-panel li { color: var(--col-text-sec); line-height: 1.65; }
     .lesson-panel ul, .lesson-panel ol { margin-top: var(--sp-3); padding-left: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); }
     .lesson-panel ul { list-style: square; }
     .lesson-panel ol { list-style: decimal; }
     .teacher-note { margin-top: var(--sp-4); padding: var(--sp-4); border-left: 4px solid var(--col-primary); background: var(--col-bg-alt); color: var(--col-text-sec); font-size: var(--sz-sm); line-height: 1.6; }
-    .dataset-wrap { overflow-x: auto; border: 1px solid var(--col-border); background: #fff; }
+    .dataset-wrap { overflow-x: auto; border: 1px solid var(--col-border); background: var(--col-bg-card); }
     .dataset-table { width: 100%; min-width: 760px; border-collapse: collapse; }
     .dataset-table th, .dataset-table td { padding: var(--sp-3); border-bottom: 1px solid var(--col-border); font-size: var(--sz-sm); text-align: left; }
     .dataset-table th { background: var(--col-bg-alt); color: var(--col-text); font-weight: 800; }
     .dataset-table td { color: var(--col-text-sec); }
     .code-sample { margin: var(--sp-4) 0; padding: var(--sp-4); background: #111; color: #fff; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: var(--sz-sm); line-height: 1.6; }
     .practice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-5); }
-    .practice-card { border: 1px solid var(--col-border); background: #fff; padding: var(--sp-6); }
+    .practice-card { border: 1px solid var(--col-border); background: var(--col-bg-card); padding: var(--sp-6); }
     .practice-card h3 { font-size: var(--sz-xl); margin-bottom: var(--sp-3); }
     .practice-card ol { list-style: decimal; padding-left: var(--sp-5); display: flex; flex-direction: column; gap: var(--sp-2); color: var(--col-text-sec); }
-    .answer { border: 1px solid var(--col-border); background: #fff; padding: var(--sp-5); margin-bottom: var(--sp-4); }
+    .answer { border: 1px solid var(--col-border); background: var(--col-bg-card); padding: var(--sp-5); margin-bottom: var(--sp-4); }
     .answer summary { cursor: pointer; font-family: var(--font-body); font-size: var(--sz-sm); font-weight: 800; color: var(--col-text); text-transform: uppercase; letter-spacing: 0.08em; }
     .answer div { margin-top: var(--sp-4); color: var(--col-text-sec); line-height: 1.65; }
     .formula { display: block; margin: var(--sp-3) 0; padding: var(--sp-3) var(--sp-4); background: var(--col-bg-alt); border: 1px solid var(--col-border); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: var(--sz-sm); color: var(--col-text); overflow-x: auto; }
@@ -90,9 +101,15 @@
           <a href="judges.html" class="nav__dd-item" role="menuitem">For Judges</a>
         </div>
       </li>
+      <li><a href="schedule.html" class="nav__link">Schedule</a></li>
       <li><a href="faq.html" class="nav__link">FAQ</a></li>
     </ul>
     <button class="nav__burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span><span></span></button>
+    <button type="button" class="nav__theme" aria-label="Toggle dark mode" aria-pressed="false" data-theme-toggle>
+      <svg class="icon-moon" width="20" height="20" aria-hidden="true"><use href="#icon-moon"/></svg>
+      <svg class="icon-sun" width="20" height="20" aria-hidden="true"><use href="#icon-sun"/></svg>
+    </button>
+
     <button type="button" class="nav__search" aria-label="Search site" aria-haspopup="dialog" data-search-open>
       <svg viewBox="0 0 23 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><g stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="9.2" cy="9" r="8.5"></circle><path d="M14.85 14.64 L20.71 20.5"></path></g></svg>
     </button>
@@ -110,7 +127,13 @@
       <a href="schools.html" class="nav__m-link">For Schools</a>
       <a href="researchers.html" class="nav__m-link">For Researchers</a>
       <a href="judges.html" class="nav__m-link">For Judges</a>
+      <a href="schedule.html"    class="nav__m-link">Schedule</a>
       <a href="faq.html" class="nav__m-link">FAQ</a>
+      <button type="button" class="nav__m-theme" aria-pressed="false" data-theme-toggle>
+        <svg class="icon-moon" width="16" height="16" aria-hidden="true"><use href="#icon-moon"/></svg>
+        <svg class="icon-sun" width="16" height="16" aria-hidden="true"><use href="#icon-sun"/></svg>
+        Dark Mode
+      </button>
       <div class="nav__m-cta"><a href="register.html" class="btn btn--white" style="width:100%;justify-content:center;">Register Interest</a></div>
     </div>
   </nav>
